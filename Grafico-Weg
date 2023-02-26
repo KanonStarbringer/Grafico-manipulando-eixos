@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+import yfinance
+
+params = {"ytick.color" : "w",
+          "xtick.color" : "w",
+          "axes.labelcolor" : "w",
+          "axes.edgecolor" : "w"}
+plt.rcParams.update(params)
+
+cotacao_weg = yfinance.download("WEGE3.SA", "2010-01-01")['Adj Close']
+
+fig, ax = plt.subplots() #Fazemos o comum, gerando o subplots
+
+ax.plot(cotacao_weg.index, cotacao_weg.values) #colocamos o que vai ficar nos eixos
+ax.set_ylabel("Cotações", labelpad = 15, color='w') #colocamos a descrição do eixo Y, tamanho e cor
+ax.set_xlabel("Date") #Colocamos somente a descrição do que vai no eixo X
+
+plt.show() #Plotamos o gráfico
